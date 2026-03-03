@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import type { Post } from "../../types";
+import type { Post } from "@/types";
 
 type Props = {
   post: Post;
