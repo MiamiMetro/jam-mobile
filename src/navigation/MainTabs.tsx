@@ -1,4 +1,6 @@
 //import react navigation
+
+//!!!Native Taba GEÇ
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //import screens
