@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import type { Post } from "../../types/post";
+import type { Post } from "../../types";
 
 type Props = {
   post: Post;
@@ -8,8 +8,8 @@ type Props = {
 export default function PostItem({ post }: Props) {
   return (
     <View>
-        <Text>{post.author.username}</Text>
-        <Text>{post.content}</Text>
+        <Text>{post.author?.username}</Text>
+        <Text>{post.text}</Text>
     </View>
   );
 }

@@ -1,5 +1,5 @@
 import { FlatList, View } from "react-native";
-import type { Post } from "../../types/post";
+import type { Post } from "../../types";
 import PostItem from "./PostItem";
 
 type Props = {
