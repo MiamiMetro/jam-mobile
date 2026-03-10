@@ -1,17 +1,20 @@
 import { FlatList, View } from "react-native";
-import type { Post } from "@/types";
+import type { PostFeedItem } from "@/types";
 import PostItem from "./PostItem";
 
 type Props = {
-  posts: Post[];
+  posts: PostFeedItem[];
+  onEndReached?: () => void;
 };
 
-export default function PostList({ posts }: Props) {
+export default function PostList({ posts, onEndReached }: Props) {
     return (
         <FlatList
-            data={posts}
+            data = {posts}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <PostItem post={item} />}
+            onEndReached = {onEndReached}
+            onEndReachedThreshold={0.5}           
         />
     );
 }
