@@ -1,12 +1,13 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import type { User } from "@/types";
 
 type Props = {
   profile: User;
+  onSignOut?: () => void;
 };
 
-export default function ProfileHeader({ profile }: Props) {
+export default function ProfileHeader({ profile, onSignOut }: Props) {
   const hasAvatar = Boolean(profile.avatar_url);
   const fallbackLetter = (profile.display_name || profile.username || "?")
     .slice(0, 1)
@@ -16,6 +17,11 @@ export default function ProfileHeader({ profile }: Props) {
     <View style={styles.container}>
       <View style={styles.headerRow}>
         <Text style={styles.headerTitle}>Profile</Text>
+        {onSignOut ? (
+          <Pressable onPress={onSignOut} style={styles.signOutButton}>
+            <Text style={styles.signOutText}>Sign out</Text>
+          </Pressable>
+        ) : null}
       </View>
 
       <View style={styles.avatarWrapper}>
@@ -44,11 +50,26 @@ const styles = StyleSheet.create({
     paddingTop: 12,
   },
   headerRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 20,
   },
   headerTitle: {
     color: "#F9FAFB",
     fontSize: 22,
+    fontWeight: "700",
+  },
+  signOutButton: {
+    borderColor: "#1F2937",
+    borderRadius: 8,
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  signOutText: {
+    color: "#D1D5DB",
+    fontSize: 13,
     fontWeight: "700",
   },
   avatarWrapper: {

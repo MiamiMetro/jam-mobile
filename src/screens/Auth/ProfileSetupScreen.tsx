@@ -10,43 +10,43 @@ import {
   TextInput,
   View,
 } from "react-native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import type { AuthStackParamList } from "../../navigation/AuthStack";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 import { authClient } from "../../lib/auth-client";
 
-type Props = NativeStackScreenProps<AuthStackParamList, "Register">;
-
-const RegisterScreen = ({ navigation }: Props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+export default function ProfileSetupScreen() {
+  const createProfile = useMutation(api.profiles.createProfile);
+  const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleRegister = async () => {
-    if (password !== confirmPassword) {
-      setError("Passwords don't match.");
+  const handleSubmit = async () => {
+    const trimmedUsername = username.trim();
+    const trimmedDisplayName = displayName.trim();
+
+    if (!trimmedUsername) {
+      setError("Username is required.");
       return;
     }
 
     try {
       setError(null);
       setIsSubmitting(true);
-
-      const result = await authClient.signUp.email({
-        email: email.trim(),
-        password,
-        name: email.trim(),
+      await createProfile({
+        username: trimmedUsername,
+        displayName: trimmedDisplayName || trimmedUsername,
       });
-
-      if (result.error) {
-        throw new Error(result.error.message || "Registration failed.");
-      }
     } catch (err) {
-      setError(getAuthErrorMessage(err, "Registration failed."));
+      setError(getProfileErrorMessage(err));
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleSignOut = async () => {
+    setError(null);
+    await authClient.signOut();
   };
 
   return (
@@ -57,64 +57,48 @@ const RegisterScreen = ({ navigation }: Props) => {
       >
         <View style={styles.content}>
           <View style={styles.header}>
-            <Text style={styles.kicker}>Jam</Text>
-            <Text style={styles.title}>Join the session</Text>
+            <Text style={styles.kicker}>Almost there</Text>
+            <Text style={styles.title}>Pick your stage name</Text>
             <Text style={styles.description}>
-              Create your account, then choose your stage name.
+              This profile is required before you can enter Jam.
             </Text>
           </View>
 
           <View style={styles.form}>
             <View style={styles.field}>
-              <Text style={styles.label}>Email</Text>
+              <Text style={styles.label}>Username</Text>
               <TextInput
                 autoCapitalize="none"
-                autoComplete="email"
                 autoCorrect={false}
                 editable={!isSubmitting}
-                keyboardType="email-address"
+                maxLength={15}
                 onChangeText={(value) => {
-                  setEmail(value);
+                  setUsername(value);
                   setError(null);
                 }}
-                placeholder="your@email.com"
+                placeholder="johndoe"
                 placeholderTextColor="#6B7280"
                 style={styles.input}
-                value={email}
+                value={username}
               />
+              <Text style={styles.hint}>
+                3-15 characters. Letters, numbers, and underscores.
+              </Text>
             </View>
 
             <View style={styles.field}>
-              <Text style={styles.label}>Password</Text>
+              <Text style={styles.label}>Display name</Text>
               <TextInput
-                autoComplete="new-password"
                 editable={!isSubmitting}
+                maxLength={50}
                 onChangeText={(value) => {
-                  setPassword(value);
+                  setDisplayName(value);
                   setError(null);
                 }}
-                placeholder="Password"
+                placeholder="John Doe"
                 placeholderTextColor="#6B7280"
-                secureTextEntry
                 style={styles.input}
-                value={password}
-              />
-            </View>
-
-            <View style={styles.field}>
-              <Text style={styles.label}>Confirm password</Text>
-              <TextInput
-                autoComplete="new-password"
-                editable={!isSubmitting}
-                onChangeText={(value) => {
-                  setConfirmPassword(value);
-                  setError(null);
-                }}
-                placeholder="Password"
-                placeholderTextColor="#6B7280"
-                secureTextEntry
-                style={styles.input}
-                value={confirmPassword}
+                value={displayName}
               />
             </View>
 
@@ -122,7 +106,7 @@ const RegisterScreen = ({ navigation }: Props) => {
 
             <Pressable
               disabled={isSubmitting}
-              onPress={handleRegister}
+              onPress={handleSubmit}
               style={({ pressed }) => [
                 styles.primaryButton,
                 pressed && !isSubmitting ? styles.buttonPressed : null,
@@ -132,33 +116,43 @@ const RegisterScreen = ({ navigation }: Props) => {
               {isSubmitting ? (
                 <ActivityIndicator color="#030712" />
               ) : (
-                <Text style={styles.primaryButtonText}>Create account</Text>
+                <Text style={styles.primaryButtonText}>Create profile</Text>
               )}
             </Pressable>
 
-            <Pressable
-              disabled={isSubmitting}
-              onPress={() => navigation.navigate("Login")}
-              style={styles.secondaryButton}
-            >
-              <Text style={styles.secondaryButtonText}>
-                Already have an account? Login
-              </Text>
+            <Pressable disabled={isSubmitting} onPress={handleSignOut} style={styles.secondaryButton}>
+              <Text style={styles.secondaryButtonText}>Sign out</Text>
             </Pressable>
           </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
-};
+}
 
-export default RegisterScreen;
+function getProfileErrorMessage(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
 
-function getAuthErrorMessage(error: unknown, fallback: string) {
-  if (error instanceof Error) {
-    return error.message || fallback;
+  if (message.includes("USERNAME_TAKEN:")) {
+    return "Username already taken. Please try a different one.";
   }
-  return fallback;
+  if (message.includes("USERNAME_RESERVED:")) {
+    return "This username is reserved. Please choose another one.";
+  }
+  if (message.includes("USERNAME_TOO_SHORT:")) {
+    return "Username is too short.";
+  }
+  if (message.includes("USERNAME_TOO_LONG:")) {
+    return "Username is too long.";
+  }
+  if (message.includes("USERNAME_INVALID_CHARS:")) {
+    return "Username can only use letters, numbers, and underscores.";
+  }
+  if (message.includes("PROFILE_EXISTS:")) {
+    return "Profile already exists. Please sign in again.";
+  }
+
+  return message || "Failed to create profile.";
 }
 
 const styles = StyleSheet.create({
@@ -175,25 +169,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   header: {
-    marginBottom: 32,
+    marginBottom: 28,
   },
   kicker: {
     color: "#22C55E",
-    fontSize: 14,
-    fontWeight: "800",
-    marginBottom: 12,
+    fontSize: 13,
+    fontWeight: "700",
+    marginBottom: 10,
     textTransform: "uppercase",
   },
   title: {
     color: "#F9FAFB",
-    fontSize: 34,
+    fontSize: 30,
     fontWeight: "800",
     marginBottom: 12,
   },
   description: {
     color: "#9CA3AF",
-    fontSize: 16,
-    lineHeight: 23,
+    fontSize: 15,
+    lineHeight: 22,
   },
   form: {
     gap: 16,
@@ -215,6 +209,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 14,
     paddingVertical: 13,
+  },
+  hint: {
+    color: "#6B7280",
+    fontSize: 12,
+    lineHeight: 18,
   },
   error: {
     backgroundColor: "#7F1D1D",

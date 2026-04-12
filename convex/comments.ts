@@ -107,7 +107,7 @@ export const create = mutation({
 
     // Verify post exists
     const post = await ctx.db.get(args.postId);
-    if (!post) {
+    if (!post || post.deletedAt != null) {
       throw new Error("Post not found");
     }
 
@@ -199,7 +199,7 @@ export const reply = mutation({
 
     // Verify parent comment exists
     const parent = await ctx.db.get(args.parentId);
-    if (!parent) {
+    if (!parent || parent.deletedAt != null) {
       throw new Error("Parent comment not found");
     }
 
@@ -521,4 +521,3 @@ export const getCountByPost = query({
     return post.commentsCount ?? 0;
   },
 });
-

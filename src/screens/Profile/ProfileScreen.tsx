@@ -4,6 +4,7 @@ import ProfileHeader from "@/components/profile/ProfileHeader";
 import PostList from "@/components/posts/PostList";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { useProfilePosts } from "@/hooks/useProfilePosts";
+import { authClient } from "@/lib/auth-client";
 
 const ProfileScreen = () => {
   const { profile, isLoading: isProfileLoading } = useMyProfile();
@@ -30,7 +31,7 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ProfileHeader profile={profile} />
+      <ProfileHeader profile={profile} onSignOut={() => authClient.signOut()} />
       <PostList
         posts={posts}
         isLoading={isLoading}
