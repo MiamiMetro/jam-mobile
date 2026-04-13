@@ -202,6 +202,46 @@ export const rateLimiter = new RateLimiter(components.rateLimiter, {
     period: HOUR,
     capacity: 1,
   },
+
+  // Band listing creation: 5 per hour
+  createBandListing: {
+    kind: "token bucket",
+    rate: 5,
+    period: HOUR,
+    capacity: 2,
+  },
+
+  // Band application: 10 per minute
+  applyToBand: {
+    kind: "token bucket",
+    rate: 10,
+    period: MINUTE,
+    capacity: 3,
+  },
+
+  // Band listing close/delete: 10 per minute
+  bandListingAction: {
+    kind: "token bucket",
+    rate: 10,
+    period: MINUTE,
+    capacity: 3,
+  },
+
+  // My track upload: 5 per hour
+  myTrackUpload: {
+    kind: "token bucket",
+    rate: 5,
+    period: HOUR,
+    capacity: 2,
+  },
+
+  // My track delete: 10 per minute
+  myTrackDelete: {
+    kind: "token bucket",
+    rate: 10,
+    period: MINUTE,
+    capacity: 3,
+  },
 });
 
 /**
@@ -231,7 +271,12 @@ export type RateLimitName =
   | "guestRoomHeartbeat"
   | "roomServerUpdate"
   | "roomMessageSend"
-  | "roomDelete";
+  | "roomDelete"
+  | "createBandListing"
+  | "applyToBand"
+  | "bandListingAction"
+  | "myTrackUpload"
+  | "myTrackDelete";
 
 /**
  * Helper to check rate limit and throw a user-friendly error

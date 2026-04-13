@@ -15,25 +15,14 @@ const siteUrls = [process.env.SITE_URL, process.env.VITE_SITE_URL]
   .flatMap((value) => value.split(",").map((url) => url.trim()))
   .filter((value) => value.length > 0);
 
-const appScheme = process.env.EXPO_APP_SCHEME ?? "jam";
-const nativeOrigins = [
-  "exp://",
-  `${appScheme}://`,
-  `${appScheme}:///`,
-];
-
-const trustedOrigins = Array.from(
-  new Set([
-    ...(siteUrls.length > 0 ? siteUrls : ["http://localhost:5173"]),
-    ...nativeOrigins,
-  ])
-);
+const webOrigins =
+  siteUrls.length > 0 ? siteUrls : ["http://localhost:5173"];
 
 export const authComponent = createClient<DataModel>(components.betterAuth);
 
 export const createAuth = (ctx: GenericCtx<DataModel>) =>
   betterAuth({
-    trustedOrigins,
+    trustedOrigins: [...webOrigins, "jam://"],
     database: authComponent.adapter(ctx),
     emailAndPassword: {
       enabled: true,
@@ -50,7 +39,8 @@ export const createAuth = (ctx: GenericCtx<DataModel>) =>
     },
     plugins: [
       expo(),
-      crossDomain({ siteUrl: trustedOrigins[0] }),
+      crossDomain({ siteUrl: webOrigins[0] }),
       convex({ authConfig }),
     ],
   });
+

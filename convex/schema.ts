@@ -281,5 +281,57 @@ export default defineSchema({
   })
     .index("by_conversation_time", ["conversationId"])
     .index("by_sender", ["senderId"]),
+
+  // Band listings — musician group recruitment posts
+  band_listings: defineTable({
+    ownerId: v.id("profiles"),
+    bandName: v.string(),
+    currentMembers: v.number(),
+    maxMembers: v.number(),
+    seekingRole: v.string(), // Vocalist, Guitarist, Bassist, Drummer, Keyboardist, Producer, Other
+    region: v.string(), // Free text input
+    regionNormalized: v.string(),
+    description: v.optional(v.string()),
+    genre: v.optional(v.string()),
+    status: v.union(v.literal("open"), v.literal("closed")),
+    applicationsCount: v.number(), // Denormalized count
+    createdAt: v.number(),
+  })
+    .index("by_owner", ["ownerId"])
+    .index("by_owner_and_status", ["ownerId", "status"])
+    .index("by_status", ["status"])
+    .index("by_status_and_role", ["status", "seekingRole"])
+    .index("by_status_and_region", ["status", "regionNormalized"])
+    .index("by_status_role_and_region", ["status", "seekingRole", "regionNormalized"])
+    .searchIndex("search_band_listings", {
+      searchField: "bandName",
+      filterFields: ["status", "seekingRole", "regionNormalized"],
+    }),
+
+  // Band applications — applications to band listings
+  band_applications: defineTable({
+    listingId: v.id("band_listings"),
+    applicantId: v.id("profiles"),
+    instrument: v.string(),
+    experience: v.string(),
+    message: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_listing", ["listingId"])
+    .index("by_applicant", ["applicantId"])
+    .index("by_listing_and_applicant", ["listingId", "applicantId"]),
+
+  // My tracks — personal music library uploads
+  my_tracks: defineTable({
+    ownerId: v.id("profiles"),
+    title: v.string(),
+    audioUrl: v.optional(v.string()),
+    audioObjectKey: v.optional(v.string()),
+    duration: v.number(), // seconds
+    fileSize: v.number(), // bytes
+    contentType: v.string(), // e.g. "audio/mpeg"
+    createdAt: v.number(),
+  })
+    .index("by_owner", ["ownerId", "createdAt"]),
 });
 

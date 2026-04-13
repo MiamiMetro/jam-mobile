@@ -190,7 +190,7 @@ export const getById = query({
   },
   handler: async (ctx, args) => {
     const post = await ctx.db.get(args.postId);
-    if (!post || post.deletedAt != null) {
+    if (!post) {
       return null;
     }
 
@@ -213,16 +213,15 @@ export const getFeedPaginated = query({
       .query("posts")
       .order("desc")
       .paginate(args.paginationOpts);
-    const activePosts = result.page.filter((post) => post.deletedAt == null);
 
-    const uniqueAuthorIds = [...new Set(activePosts.map((post) => post.authorId))];
+    const uniqueAuthorIds = [...new Set(result.page.map((post) => post.authorId))];
     const authorEntries = await Promise.all(
       uniqueAuthorIds.map(async (authorId) => [authorId, await ctx.db.get(authorId)] as const)
     );
     const authorMap = new Map(authorEntries);
 
     const page = await Promise.all(
-      activePosts.map((post) =>
+      result.page.map((post) =>
         formatPost(ctx, post, currentProfile?._id, {
           author: authorMap.get(post.authorId) ?? null,
         })
@@ -265,16 +264,15 @@ export const getByUsernamePaginated = query({
       .withIndex("by_author", (q) => q.eq("authorId", author._id))
       .order("desc")
       .paginate(args.paginationOpts);
-    const activePosts = result.page.filter((post) => post.deletedAt == null);
 
-    const uniqueAuthorIds = [...new Set(activePosts.map((post) => post.authorId))];
+    const uniqueAuthorIds = [...new Set(result.page.map((post) => post.authorId))];
     const authorEntries = await Promise.all(
       uniqueAuthorIds.map(async (authorId) => [authorId, await ctx.db.get(authorId)] as const)
     );
     const authorMap = new Map(authorEntries);
 
     const page = await Promise.all(
-      activePosts.map((post) =>
+      result.page.map((post) =>
         formatPost(ctx, post, currentProfile?._id, {
           author: authorMap.get(post.authorId) ?? null,
         })
@@ -311,7 +309,8 @@ export const remove = mutation({
       throw new Error("You can only delete your own posts");
     }
 
-    // Soft delete: mark deleted and clear content. Lists omit deleted posts.
+    // Soft delete: mark deleted and clear content. The post document is kept so
+    // existing links remain resolvable. Feed/profile show a placeholder.
     await ctx.db.patch(args.postId, {
       deletedAt: Date.now(),
       text: undefined,
@@ -417,16 +416,15 @@ export const getCommunityPostsPaginated = query({
       .withIndex("by_community", (q) => q.eq("communityId", args.communityId))
       .order("desc")
       .paginate(args.paginationOpts);
-    const activePosts = result.page.filter((post) => post.deletedAt == null);
 
-    const uniqueAuthorIds = [...new Set(activePosts.map((post) => post.authorId))];
+    const uniqueAuthorIds = [...new Set(result.page.map((post) => post.authorId))];
     const authorEntries = await Promise.all(
       uniqueAuthorIds.map(async (authorId) => [authorId, await ctx.db.get(authorId)] as const)
     );
     const authorMap = new Map(authorEntries);
 
     const page = await Promise.all(
-      activePosts.map((post) =>
+      result.page.map((post) =>
         formatPost(ctx, post, currentProfile?._id, {
           author: authorMap.get(post.authorId) ?? null,
         })
@@ -474,3 +472,4 @@ export const getLikes = query({
     };
   },
 });
+

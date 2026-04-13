@@ -210,6 +210,19 @@ export const remove = mutation({
  * it fills the requested page size with matches, so results are not limited
  * to only the first loaded friendship page.
  */
+export const getCount = query({
+  args: { userId: v.id("profiles") },
+  handler: async (ctx, args) => {
+    const rows = await ctx.db
+      .query("friends")
+      .withIndex("by_user_and_status", (q) =>
+        q.eq("userId", args.userId).eq("status", "accepted")
+      )
+      .collect();
+    return rows.length;
+  },
+});
+
 export const listPaginated = query({
   args: {
     userId: v.optional(v.id("profiles")),

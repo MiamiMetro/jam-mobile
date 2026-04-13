@@ -24,6 +24,11 @@ export const MAX_LENGTHS = {
   ROOM_HANDLE: 30,
   ROOM_DESCRIPTION: 500,
   ROOM_MESSAGE: 300,
+  BAND_NAME: 50,
+  BAND_DESCRIPTION: 500,
+  BAND_APPLICATION_MESSAGE: 500,
+  BAND_EXPERIENCE: 300,
+  BAND_REGION: 100,
 } as const;
 
 /** Minimum lengths for user-generated content */
