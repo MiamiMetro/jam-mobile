@@ -21,6 +21,22 @@ export type PostFeedItem = PostFeedReturn["page"][number];
 type RoomsFeedReturn = FunctionReturnType<typeof api.rooms.listActivePaginated>;
 export type RoomFeedItem = RoomsFeedReturn["page"][number];
 
+// Infer room detail type
+type RoomDetailReturn = FunctionReturnType<typeof api.rooms.getByHandle>;
+export type RoomDetail = NonNullable<RoomDetailReturn>;
+
+// Infer current user's room type
+type MyRoomReturn = FunctionReturnType<typeof api.rooms.getMyRoom>;
+export type MyRoom = NonNullable<MyRoomReturn>;
+
+// Infer friend-in-room type
+type FriendsInRoomsReturn = FunctionReturnType<typeof api.rooms.getFriendsInRooms>;
+export type FriendInRoomItem = FriendsInRoomsReturn[number];
+
+// Infer room participant type
+type RoomParticipantsReturn = FunctionReturnType<typeof api.rooms.getParticipants>;
+export type RoomParticipant = RoomParticipantsReturn["participants"][number];
+
 // Infer Comment type from comments query (Convex format - single source of truth)
 type CommentsQueryReturn = FunctionReturnType<typeof api.comments.getByPostPaginated>;
 export type Comment = CommentsQueryReturn["page"][number];
@@ -48,6 +64,6 @@ export type { Doc, Id } from "../../convex/_generated/dataModel";
 
 // Helper type that uses Doc and Id to ensure imports are recognized
 // This is a workaround for TypeScript's unused import detection
-type CoreTables = "profiles" | "posts" | "comments" | "messages" | "conversations";
+type CoreTables = "profiles" | "posts" | "comments" | "messages" | "conversations" | "rooms";
 export type ConvexDoc<T extends CoreTables> = Doc<T>;
 export type ConvexId<T extends CoreTables> = Id<T>;

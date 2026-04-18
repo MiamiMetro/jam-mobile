@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="868" height="1318" viewBox="0 0 868 1318">
+<rect width="100%" height="100%" fill="#0b1020"/>
+<style>text{font-family:Inter,Arial,sans-serif;} .title{font-size:22px;font-weight:700;fill:#f3f4f6;} .subtitle{font-size:12px;fill:#94a3b8;} .section{font-size:18px;font-weight:700;fill:#e5e7eb;} .hex{font-size:11px;fill:#cbd5e1;}</style>
+<text x="24" y="32" class="title">Jam Mobile Renk Paleti</text>
+<text x="24" y="50" class="subtitle">Kaynak: src/*.tsx, src/*.ts ve app.json içindeki benzersiz renkler</text>
+<text x="24" y="76" class="section">Dark Palette (42)</text>
+<rect x="24" y="92" width="92" height="92" rx="10" fill="#000000" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="200" class="hex">#000000</text>
+<rect x="128" y="92" width="92" height="92" rx="10" fill="#030712" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="200" class="hex">#030712</text>
+<rect x="232" y="92" width="92" height="92" rx="10" fill="#111827" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="200" class="hex">#111827</text>
+<rect x="336" y="92" width="92" height="92" rx="10" fill="#16a34a" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="200" class="hex">#16a34a</text>
+<rect x="440" y="92" width="92" height="92" rx="10" fill="#171b25" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="200" class="hex">#171b25</text>
+<rect x="544" y="92" width="92" height="92" rx="10" fill="#171e2a" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="200" class="hex">#171e2a</text>
+<rect x="648" y="92" width="92" height="92" rx="10" fill="#1a1e29" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="200" class="hex">#1a1e29</text>
+<rect x="752" y="92" width="92" height="92" rx="10" fill="#1e2330" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="200" class="hex">#1e2330</text>
+<rect x="24" y="218" width="92" height="92" rx="10" fill="#1f2937" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="326" class="hex">#1f2937</text>
+<rect x="128" y="218" width="92" height="92" rx="10" fill="#222733" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="326" class="hex">#222733</text>
+<rect x="232" y="218" width="92" height="92" rx="10" fill="#22c55e" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="326" class="hex">#22c55e</text>
+<rect x="336" y="218" width="92" height="92" rx="10" fill="#251b0a" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="326" class="hex">#251b0a</text>
+<rect x="440" y="218" width="92" height="92" rx="10" fill="#2563eb" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="326" class="hex">#2563eb</text>
+<rect x="544" y="218" width="92" height="92" rx="10" fill="#262b37" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="326" class="hex">#262b37</text>
+<rect x="648" y="218" width="92" height="92" rx="10" fill="#303644" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="326" class="hex">#303644</text>
+<rect x="752" y="218" width="92" height="92" rx="10" fill="#353b49" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="326" class="hex">#353b49</text>
+<rect x="24" y="344" width="92" height="92" rx="10" fill="#374151" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="452" class="hex">#374151</text>
+<rect x="128" y="344" width="92" height="92" rx="10" fill="#4b4f5d" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="452" class="hex">#4b4f5d</text>
+<rect x="232" y="344" width="92" height="92" rx="10" fill="#4b5563" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="452" class="hex">#4b5563</text>
+<rect x="336" y="344" width="92" height="92" rx="10" fill="#4b5565" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="452" class="hex">#4b5565</text>
+<rect x="440" y="344" width="92" height="92" rx="10" fill="#6b7280" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="452" class="hex">#6b7280</text>
+<rect x="544" y="344" width="92" height="92" rx="10" fill="#737d8c" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="452" class="hex">#737d8c</text>
+<rect x="648" y="344" width="92" height="92" rx="10" fill="#7e8796" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="452" class="hex">#7e8796</text>
+<rect x="752" y="344" width="92" height="92" rx="10" fill="#7f1d1d" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="452" class="hex">#7f1d1d</text>
+<rect x="24" y="470" width="92" height="92" rx="10" fill="#8f98a8" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="578" class="hex">#8f98a8</text>
+<rect x="128" y="470" width="92" height="92" rx="10" fill="#991b1b" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="578" class="hex">#991b1b</text>
+<rect x="232" y="470" width="92" height="92" rx="10" fill="#9ca3af" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="578" class="hex">#9ca3af</text>
+<rect x="336" y="470" width="92" height="92" rx="10" fill="#c89434" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="578" class="hex">#c89434</text>
+<rect x="440" y="470" width="92" height="92" rx="10" fill="#d8a64a" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="578" class="hex">#d8a64a</text>
+<rect x="544" y="470" width="92" height="92" rx="10" fill="#ef4444" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="578" class="hex">#ef4444</text>
+<rect x="648" y="470" width="92" height="92" rx="10" fill="#f87171" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="578" class="hex">#f87171</text>
+<rect x="752" y="470" width="92" height="92" rx="10" fill="rgba(0,0,0,0.09)" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="578" class="hex">rgba(0,0,0,0.09)</text>
+<rect x="24" y="596" width="92" height="92" rx="10" fill="rgba(0,0,0,0.14)" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="704" class="hex">rgba(0,0,0,0.14)</text>
+<rect x="128" y="596" width="92" height="92" rx="10" fill="rgba(127,29,29,0.5)" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="704" class="hex">rgba(127,29,29,0.5)</text>
+<rect x="232" y="596" width="92" height="92" rx="10" fill="rgba(216,166,74,0.12)" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="704" class="hex">rgba(216,166,74,0.12)</text>
+<rect x="336" y="596" width="92" height="92" rx="10" fill="rgba(216,166,74,0.13)" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="704" class="hex">rgba(216,166,74,0.13)</text>
+<rect x="440" y="596" width="92" height="92" rx="10" fill="rgba(216,166,74,0.35)" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="704" class="hex">rgba(216,166,74,0.35)</text>
+<rect x="544" y="596" width="92" height="92" rx="10" fill="rgba(216,166,74,0.45)" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="704" class="hex">rgba(216,166,74,0.45)</text>
+<rect x="648" y="596" width="92" height="92" rx="10" fill="rgba(248,113,113,0.25)" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="704" class="hex">rgba(248,113,113,0.25)</text>
+<rect x="752" y="596" width="92" height="92" rx="10" fill="rgba(248,113,113,0.35)" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="704" class="hex">rgba(248,113,113,0.35)</text>
+<rect x="24" y="722" width="92" height="92" rx="10" fill="rgba(37,27,10,0.35)" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="830" class="hex">rgba(37,27,10,0.35)</text>
+<rect x="128" y="722" width="92" height="92" rx="10" fill="rgba(37,27,10,0.58)" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="830" class="hex">rgba(37,27,10,0.58)</text>
+<text x="24" y="872" class="section">Light Palette (20)</text>
+<rect x="24" y="888" width="92" height="92" rx="10" fill="#a7f3d0" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="996" class="hex">#a7f3d0</text>
+<rect x="128" y="888" width="92" height="92" rx="10" fill="#aeb6c4" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="996" class="hex">#aeb6c4</text>
+<rect x="232" y="888" width="92" height="92" rx="10" fill="#b0b7c4" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="996" class="hex">#b0b7c4</text>
+<rect x="336" y="888" width="92" height="92" rx="10" fill="#c7ccd6" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="996" class="hex">#c7ccd6</text>
+<rect x="440" y="888" width="92" height="92" rx="10" fill="#d1d5db" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="996" class="hex">#d1d5db</text>
+<rect x="544" y="888" width="92" height="92" rx="10" fill="#d5d9e2" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="996" class="hex">#d5d9e2</text>
+<rect x="648" y="888" width="92" height="92" rx="10" fill="#e5e7eb" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="996" class="hex">#e5e7eb</text>
+<rect x="752" y="888" width="92" height="92" rx="10" fill="#e6f4fe" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="996" class="hex">#e6f4fe</text>
+<rect x="24" y="1014" width="92" height="92" rx="10" fill="#eef0f5" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="1122" class="hex">#eef0f5</text>
+<rect x="128" y="1014" width="92" height="92" rx="10" fill="#f9fafb" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="1122" class="hex">#f9fafb</text>
+<rect x="232" y="1014" width="92" height="92" rx="10" fill="#fecaca" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="1122" class="hex">#fecaca</text>
+<rect x="336" y="1014" width="92" height="92" rx="10" fill="#fee2e2" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="1122" class="hex">#fee2e2</text>
+<rect x="440" y="1014" width="92" height="92" rx="10" fill="#ffffff" stroke="rgba(255,255,255,0.18)"/>
+<text x="444" y="1122" class="hex">#ffffff</text>
+<rect x="544" y="1014" width="92" height="92" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.18)"/>
+<text x="548" y="1122" class="hex">rgba(255,255,255,0.03)</text>
+<rect x="648" y="1014" width="92" height="92" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)"/>
+<text x="652" y="1122" class="hex">rgba(255,255,255,0.04)</text>
+<rect x="752" y="1014" width="92" height="92" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)"/>
+<text x="756" y="1122" class="hex">rgba(255,255,255,0.06)</text>
+<rect x="24" y="1140" width="92" height="92" rx="10" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)"/>
+<text x="28" y="1248" class="hex">rgba(255,255,255,0.07)</text>
+<rect x="128" y="1140" width="92" height="92" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+<text x="132" y="1248" class="hex">rgba(255,255,255,0.08)</text>
+<rect x="232" y="1140" width="92" height="92" rx="10" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.18)"/>
+<text x="236" y="1248" class="hex">rgba(255,255,255,0.09)</text>
+<rect x="336" y="1140" width="92" height="92" rx="10" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)"/>
+<text x="340" y="1248" class="hex">rgba(255,255,255,0.1)</text>
+</svg>

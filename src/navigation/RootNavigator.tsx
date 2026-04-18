@@ -8,6 +8,7 @@ import MainTabs from "./MainTabs";
 import ProfileSetupScreen from "../screens/Auth/ProfileSetupScreen";
 import PostDetailScreen from "../screens/Posts/PostDetailScreen";
 import ConversationScreen from "../screens/Messages/ConversationScreen";
+import JamRoomScreen from "../screens/Jams/JamRoomScreen";
 import { authClient } from "../lib/auth-client";
 import { api } from "../../convex/_generated/api";
 
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   Main: undefined;
   PostDetail: { postId: string };
   Conversation: { conversationId: string; title?: string };
+  JamRoom: { handle: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -45,6 +47,7 @@ export default function RootNavigator() {
           <Stack.Screen name="Main" component={MainTabs} />
           <Stack.Screen name="PostDetail" component={PostDetailScreen} />
           <Stack.Screen name="Conversation" component={ConversationScreen} />
+          <Stack.Screen name="JamRoom" component={JamRoomScreen} />
         </>
       ) : (
         <Stack.Screen name="ProfileSetup" component={ProfileSetupScreen} />
